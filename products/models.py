@@ -3,7 +3,7 @@ from django.db import models
 
 class Category(models.Model):
     """
-    Model for product categories includes a programmtic name and 
+    Model for product categories includes a programmtic name and
     a friendly name for front-end.
     """
 
