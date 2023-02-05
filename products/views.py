@@ -9,9 +9,10 @@ def all_products(request):
     A view to show all products, including sorting and search queries.
     Note products returns all products from Product model.
     then added to context to refer in template.
-    For search, the text input from the form is labeled name='q' 
+    For search, the text input from the form is labeled name='q'
     Need to import redirect, reverse, messages for the error message.
     For Q see notes on Notion.
+    Need to allow case-insensitive sorting on the name field, use annotation.
     """
 
     products = Product.objects.all()
@@ -27,7 +28,8 @@ def all_products(request):
             if sortkey == 'name':
                 sortkey = 'lower_name'
                 products = products.annotate(lower_name=Lower('name'))
-
+            if sortkey == 'category':
+                sortkey = 'category__name'
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
@@ -46,8 +48,7 @@ def all_products(request):
                     request, "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(
-                description__icontains=query)
+            queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'

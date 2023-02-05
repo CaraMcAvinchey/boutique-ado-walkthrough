@@ -13,7 +13,7 @@
     <div class="overlay"></div>
     <div class="container-fluid">
 
-        <!-- contains page title and selected categories -->
+        <!-- This contains the page title 'Products' and selected categories -->
         <div class="row">
             <div class="col text-center mt-3">
                 <h2 class="logo-font">Products</h2>
@@ -26,14 +26,12 @@
             </div>
         </div>
 
-        <!-- for the products themselves -->
+        <!-- The list of products according to their sort or categories -->
         <div class="row">
+            <!-- This is above the products list, below the title -->
             <div class="product-container col-10 offset-1">
                 <div class="row mt-1 mb-2">
-                    <!-- 
-                    sort options menu, on top on mobile using 'order-first' class
-                    last column on larger screens. 
-                    -->
+                    <!-- The sort options menu, placed top centre on mobile using 'order-first' class. Placed right as a last column on larger screens. -->
                     <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
                         <div class="sort-select-wrapper w-50">
                             <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
@@ -49,10 +47,13 @@
                             </select>
                         </div>
                     </div>
-                     <!-- product count and search results -->
+                     <!-- The product count after a search result returned and products are listed -->
                     <div class="col-12 col-md-6 order-md-first">
                         <p class="text-muted mt-3 text-center text-md-left">
-                            <!-- look at the context -->
+                            <!-- 
+                            If someone searches, selects a category or sorts then return the number of products
+                            with a link to go back home. Look at the context in all_products view to follow. 
+                            -->
                             {% if search_term or current_categories or current_sorting != 'None_None' %}
                                 <span class="small"><a href="{% url 'products' %}">Products Home</a> | </span>
                             {% endif %}
@@ -61,7 +62,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <!-- for loop to iterate through products variable -->
+                    <!-- A for loop to iterate through products variable -->
                     {% for product in products %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="card h-100 border-0" >
