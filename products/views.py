@@ -3,11 +3,16 @@ from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Category
 
-# Create your views here.
-
 
 def all_products(request):
-    """ A view to show all products, including sorting and search queries """
+    """
+    A view to show all products, including sorting and search queries.
+    Note products returns all products from Product model.
+    then added to context to refer in template.
+    For search, the text input from the form is labeled name='q' 
+    Need to import redirect, reverse, messages for the error message.
+    For Q see notes on Notion.
+    """
 
     products = Product.objects.all()
     query = None

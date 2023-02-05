@@ -1,11 +1,13 @@
 <!-- button to open the search bar -->
 <li class="list-inline-item">
+    <!-- the links use d-block and d-lg-none therefore hidden on large screens -->
     <a class="text-black nav-link d-block d-lg-none" href="#" id="mobile-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="text-center">
             <div><i class="fas fa-search fa-lg"></i></div>
             <p class="my-0">Search</p>
         </div>
     </a>
+    <!-- instead of links for my account dropdown, used form instead -->
     <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-search">
         <form class="form" method="GET" action="{% url 'products' %}">
             <div class="input-group w-100">

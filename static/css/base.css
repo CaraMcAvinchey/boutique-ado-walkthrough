@@ -1,4 +1,5 @@
 html {
+    /* This allows the h100 classes in vertical centering to work */
     height: 100%;
 }
 
@@ -10,7 +11,7 @@ body {
     font-family: 'Lato';
 }
 
-/* from Bulma */
+/* from Bulma (another CSS framework) */
 .icon {
     align-items: center;
     display: inline-flex;
@@ -60,6 +61,7 @@ body {
     background: #000 !important
 }
 
+/* cover up the body background image for products page */
 .overlay {
 	height: 100%;
 	width: 100%;
@@ -70,9 +72,14 @@ body {
 	z-index: -1;
 }
 
+a.category-badge > span.badge:hover {
+    background: #212529 !important;
+    color: #fff !important;
+}
+
 /* -------------------------------- Media Queries */
 
-/* Slightly larger container on xl screens */
+/* slightly larger container on xl screens */
 @media (min-width: 1200px) {
   .container {
     max-width: 80%;
@@ -91,6 +98,7 @@ body {
 
     .header-container {
         padding-top: 164px;
+        /* push the body down to the bottom of the main page header (page header block added to index.html) */
     }
 }
 

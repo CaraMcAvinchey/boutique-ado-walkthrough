@@ -2,6 +2,10 @@ from django.db import models
 
 
 class Category(models.Model):
+    """
+    Model for product categories includes a programmtic name and 
+    a friendly name for front-end.
+    """
 
     class Meta:
         verbose_name_plural = 'Categories'
@@ -17,6 +21,10 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    """
+    Model for products, each requires a name, description and price
+    all else is optional (null=True blank=True).
+    """
     category = models.ForeignKey(
         'Category', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True, blank=True)
