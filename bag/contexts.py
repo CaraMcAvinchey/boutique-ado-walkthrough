@@ -5,6 +5,14 @@ from products.models import Product
 
 
 def bag_contents(request):
+    """
+    For items with no sizes item_data = quantity
+    but for items that have size it will be a dictionary.
+    Check to see if item_data is an integer (then we know it's just quantity).
+    If not, iterate through the inner dictionary of items_by_size,
+    increment product count and total.
+    For each of these, add to bag and return to the template.
+    """
 
     bag_items = []
     total = 0
