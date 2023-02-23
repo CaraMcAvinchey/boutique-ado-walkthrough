@@ -22,17 +22,26 @@
         handleEnableDisable(itemId);
     });
 
-    // Increment quantity
-    $('.increment-qty').click(function(e) {
+    // Increment Quantity
+    $('.increment-qty').click(function(e) { 
+       /*
+       Find the closest input box.
+       The .closest method searches up the DOM .find searches down.
+       From the button element, go up the tree to the closest input_group class
+       then drill down to find the first element with the class qty_input.
+       Next, cash the value from above in to a variable currentValue.
+       Then use currentValue to set the input boxes new value to current value +1
+       Repeat for decrement quantity -1
+       */ 
        e.preventDefault();
-       var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
-       var currentValue = parseInt($(closestInput).val());
-       $(closestInput).val(currentValue + 1);
+       var closestInput = $(this).closest('.input-group').find('.qty_input')[0]; 
+       var currentValue = parseInt($(closestInput).val()); 
+       $(closestInput).val(currentValue + 1); 
        var itemId = $(this).data('item_id');
        handleEnableDisable(itemId);
     });
 
-    // Decrement quantity
+    // Decrement Quantity
     $('.decrement-qty').click(function(e) {
        e.preventDefault();
        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
