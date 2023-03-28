@@ -5,9 +5,8 @@ from .models import Product, Category
 class ProductAdmin(admin.ModelAdmin):
     """
     Extend the built-in ModelAdmin class. The tuple
-    tells the admin which fields to display. 
-    Products are ordered according to their sku 
-    (must be a tuple)
+    tells the admin which fields to display.
+    Products are ordered according to their sku (must be a tuple)
     """
     list_display = (
         'sku',
